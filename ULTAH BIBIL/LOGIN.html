@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun Sayangku</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+    .page {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      top: 0; left: 0;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      overflow-y: auto;
+    }
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      animation: fadeIn 1.5s;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: pop 2s infinite alternate;
+    }
+    p {
+      font-size: 1.4rem;
+      margin: 15px 0;
+    }
+    button {
+      padding: 12px 25px;
+      margin-top: 25px;
+      border: none;
+      border-radius: 25px;
+      background: #ffffff;
+      color: #0072ff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+        background: #0072ff;
+        color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .photos {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "left right";
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-items: center;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.photos img {
+  max-width: 100%;    /* jangan melebihi kotak */
+  max-height: 350px;  /* biar tingginya seragam */
+  object-fit: contain; /* foto utuh, tidak kepotong */
+  border-radius: 20px;
+  background: #e6f3ff; /* background lembut biar rapi */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  display: block;
+  padding: 5px; /* biar ada ruang antar foto dengan background */
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+}
+
+/* Area khusus */
+.photos img:nth-child(1) {
+  grid-area: top;
+}
+.photos img:nth-child(2) {
+  grid-area: left;
+}
+.photos img:nth-child(3) {
+  grid-area: right;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+  .photos {
+    grid-template-areas:
+      "top"
+      "left"
+      "right";
+    grid-template-columns: 1fr;
+  }
+
+  .photos img {
+    max-height: 250px; /* lebih kecil di HP */
+  }
+}
+
+
+    /* Animasi */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pop {
+      from {transform: scale(1);}
+      to {transform: scale(1.05);}
+    }
+  </style>
+</head>
+<body>
+  <!-- Halaman 1 -->
+  <div class="page active" id="page1">
+    <h1>🎂 HAPPY BIRTHDAY SAYANGKUUUU!!! 🎂</h1>
+    <p>I HAVE SOMETHING FOR YOU</p>
+    <button onclick="nextPage(2)">Lanjut ➡️</button>
+  </div>
+
+  <!-- Halaman 2 -->
+  <div class="page" id="page2">
+    <h1>✨ BUAT SAYANGKU YANG IMUTTT ✨</h1>
+    <p>Hari ini adalah hari dimana semesta tersenyum</p>
+    <p>Memandangimu yang telah lahir ke dunia ❤️</p>
+    <p>Aku bersyukur hingga saat ini terus bersamamu</p>
+    <p>Semoga kita selalu bersama selamanya sayanggg 💕</p>
+    <button onclick="nextPage(3)">Lihat Lagi ➡️</button>
+  </div>
+
+  <!-- Halaman 3 -->
+  <div class="page" id="page3">
+    <h1>📸 "THE BEAUTY OF YOU" 📸</h1>
+    <div class="photos">
+      <img src="FOTO2.jpg" alt="foto1">
+      <img src="FOTO1.jpg" alt="foto2">
+      <img src="FOTO3.jpg" alt="foto3">
+    </div>
+    <h2 style="margin-top:20px;">I Love You ❤️</h2>
+    <!-- Tombol kembali ke awal -->
+    <button onclick="nextPage(1)">⬅️ Kembali ke Awal</button>
+  </div>
+
+  <!-- Musik -->
+  <audio autoplay controls>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function nextPage(n) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById("page"+n).classList.add('active');
+      window.scrollTo(0,0);
+    }
+  </script>
+</body>
+</html>
